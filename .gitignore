@@ -1,0 +1,11 @@
+.env
+.flaskenv
+__pycache__/
+*.py[cod]
+.venv
+.DS_Store
+.vscode/
+package-lock.json
+Pipfile.lock
+*.db
+instance/
