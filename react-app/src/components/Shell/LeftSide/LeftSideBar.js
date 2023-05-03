@@ -21,7 +21,7 @@ function LeftSideLinks() {
 
     const userChannelList = Object.values(userChannels);
 
- 
+
     return (
 
         <div id="grid-leftside" className="grid-leftside-threecolumn">
@@ -55,21 +55,21 @@ function LeftSideLinks() {
                         </div>
                     </NavLink>
 
-                        <div>
-                            {/* <button>
+                    <div>
+                        {/* <button>
                                 <span style={{ width: "20px" }}><i className="far fa-comment"></i></span>
                                 <span className="ellipsis-if-long">Create New Channel</span>
                             </button> */}
-                            <OpenModalButton
-                                modalComponent={
-                                    <CreateChannelModal
-                                        user={sessionUser}
-                                    />}
-                                buttonText={`Create a New Channel`}
-                                className="ellipsis-if-long"
-                                renderChatIcon={true}
-                            />
-                        </div>
+                        <OpenModalButton
+                            modalComponent={
+                                <CreateChannelModal
+                                    user={sessionUser}
+                                />}
+                            buttonText={`Create a New Channel`}
+                            className="ellipsis-if-long"
+                            renderChatIcon={true}
+                        />
+                    </div>
 
                 </div>
 
@@ -101,7 +101,7 @@ function LeftSideLinks() {
 
                 {/* <div>
                     {/* <!-- ### (leftside-button-selected OPTION) IF THIS MATCHES CURRENT CHANNEL ADD STYLE THIS STYLE TO BUTTON --> */}
-                    {/* <button >
+                {/* <button >
                         <span><img src="https://ca.slack-edge.com/T03GU501J-U0476TK99LH-61c6e53dbd3d-512"
                             alt="Brian Hitchin"
                             style={{ borderRadius: "5px", width: "20px", height: "20px", marginTop: "4px" }}></img></span>
@@ -110,6 +110,60 @@ function LeftSideLinks() {
                 </div>  */}
 
             </div>
+
+
+            <div style={{ position: 'absolute', bottom: '0px' }}>
+                <div className="footer" style={{ padding: '20px', justifyContent: 'flex-start', alignItems: "flex-start", backgroundColor: '#3f0e40' }}>
+
+                    <div style={{ display: 'flex', justifyContent: 'flex-start', marginTop: '5px', textAlign: 'left' }}>
+
+                        <div>
+                            <span style={{ color: '#969696' }}>Dave Titus:</span>
+                        </div>
+
+                        <div className="footer-link">
+                            <span>
+                                <a className="footer-button" href="http://creativegozone.com/" target="_blank" rel="noreferrer">
+                                    <button className="copyright-button2">
+                                        <i className="fas fa-eye" style={{ fontSize: '14px' }}></i>
+                                    </button>
+                                </a>
+                            </span>
+                        </div>
+
+                        <div className="footer-link">
+                            <span>
+                                <a className="footer-button" href="https://github.com/dtitus929/Smack" target="_blank" rel="noreferrer">
+                                    <button className="copyright-button2">
+                                        <i className="fa fa-github" style={{ fontSize: '14px' }}></i>
+                                    </button>
+                                </a>
+                            </span>
+                        </div>
+
+                        <div className="footer-link">
+                            <span>
+                                <a className="footer-button" href="https://www.linkedin.com/in/djtitus/" target="_blank" rel="noreferrer">
+                                    <button className="copyright-button2">
+                                        <i className="fa fa-linkedin-square" style={{ fontSize: '14px' }}></i>
+                                    </button>
+
+
+                                </a>
+                            </span>
+                        </div>
+
+                    </div >
+
+                    <div className="footer-link" style={{ fontSize: '11px' }}>Additional Contributors:<br />Cameron Beck,&nbsp;&nbsp;Brian Hitchin,&nbsp;&nbsp;Cynthia Liang</div>
+
+
+
+                </div >
+            </div>
+
+
+
 
 
         </div>
