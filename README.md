@@ -1,10 +1,15 @@
-# Remember the Eggs
+# Smack
 
-This is a full stack project developed while a student at App Academy.  It is a clone of the popular to-do list app called Remember the Milk.  The back-end utilizes a Flask server framework with a SQLAlchemy ORM. The front-end is React and makes use of Redux as a data store. No styling frameworks were used... just standard CSS.
+This is a full stack group project developed while a student at App Academy.  It is a clone of the popular messaging app Slack.  The back-end utilizes a Flask server framework with a SQLAlchemy ORM. The front-end is React and makes use of Redux as a data store. No styling frameworks were used... just standard CSS.
+
+Additional Contributors: 
+[Cameron Beck](https://github.com/cbkinase) |
+[Brian Hitchin](https://github.com/brianhitchin) |
+[Cynthia Liang](https://github.com/cynthialiang00)
 
 Available for view at: [Smack](https://davet-smack.onrender.com/)
 
-![remeggs-screenshots-github](https://user-images.githubusercontent.com/111056707/234941747-ab8da574-5844-448d-baff-f73d86df57ab.png)
+![smack_screenshots](https://user-images.githubusercontent.com/111056707/236525525-acaef303-4d02-40cd-b79b-f31d92bf2a63.png)
 
 
 ## Technologies Used
@@ -44,15 +49,5 @@ The structure for this app includes a root Pipfile for installing dependancies f
 7. Start the front-end server: `npm start`
 
 
-<p align="center">
-Cameron Beck <a href="https://github.com/cbkinase">Github</a>
-</p>
 
-<p align="center">
-Cynthia Liang <a href="https://github.com/cynthialiang00">Github</a>
-</p>
-
-<p align="center">
-Brian Hitchin <a href="https://github.com/brianhitchin">Github</a>
-</p>
 
