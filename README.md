@@ -28,10 +28,10 @@ Available for view at: [Smack](https://davet-smack.onrender.com/)
 
 ## Index
 
-[MVP Feature List](https://github.com/dtitus929/Capstone/wiki/MVP-Feature-List) |
-[Database Schema](https://github.com/dtitus929/Capstone/wiki/Database-Schema) |
-[User Stories](https://github.com/dtitus929/Capstone/wiki/User-Stories) |
-[Wire Frames](https://github.com/dtitus929/Capstone/wiki/Wireframes)
+[Wiki](https://github.com/dtitus929/Smack/wiki) |
+[API Documentation](https://github.com/dtitus929/Smack/wiki/API-Documentation) |
+[Database Schema](https://github.com/dtitus929/Smack/wiki/DB-Schema) |
+[Redux Store Shape](https://github.com/dtitus929/Smack/wiki/Redux-Store-Shape)
 
 ## Setup Instructions
 
