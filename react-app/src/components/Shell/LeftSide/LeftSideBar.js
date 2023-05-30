@@ -3,12 +3,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import LeftSideBarDMSection from './LeftSidebarDMSection'
 
 import * as ChlActions from "../../../store/channel"
 
 import OpenModalButton from '../../OpenModalButton';
 import CreateChannelModal from '../../CreateFormModal/CreateChannelModal';
 function LeftSideLinks() {
+
+    const { channelId } = useParams();
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -33,26 +36,50 @@ function LeftSideLinks() {
 
                     <NavLink exact to={`/channels/explore`}>
                         <div>
-                            <button>
-                                <span style={{ width: "20px" }}><i className="fa fa-newspaper-o"></i></span>
-                                <span className="ellipsis-if-long">Explore Channels</span>
-                            </button>
+
+                            {/explore/.test(window.location.href) ? (
+                                <button style={{ textDecoration: 'none', backgroundColor: '#275895', color: '#e9e8e8' }}>
+                                    <span style={{ width: "20px" }}><i className="fa fa-newspaper-o"></i></span>
+                                    <span className="ellipsis-if-long">Explore Channels</span>
+                                </button>
+                            ) : (
+                                <button style={{ textDecoration: 'none' }}>
+                                    <span style={{ width: "20px" }}><i className="fa fa-newspaper-o"></i></span>
+                                    <span className="ellipsis-if-long">Explore Channels</span>
+                                </button>
+                            )}
+
+
                         </div>
                     </NavLink>
 
-                    <NavLink onClick={
-                        e => {
-                            e.preventDefault();
-                            alert("Direct Message Feature Coming Soon")
-                        }
-                    } exact to={`/channels/direct`}
+                    <NavLink
+                    // onClick={e => {
+                    //         e.preventDefault();
+                    //         alert("Direct Message Feature Coming Soon")
+                    //     }
+                    // }
+                    exact to={`/channels/direct`}
                     >
-                        <div>
-                            <button>
+                      <div>
+                      {/\/channels\/direct/.test(window.location.href) ? (
+                                <button style={{ textDecoration: 'none', backgroundColor: '#275895', color: '#e9e8e8' }}>
+                                    <span style={{ width: "20px" }}><i className="far fa-comments"></i></span>
+                                    <span className="ellipsis-if-long">Direct Messages</span>
+                                </button>
+                            ) : (
+                                <button style={{ textDecoration: 'none' }}>
+                                    <span style={{ width: "20px" }}><i className="far fa-comments"></i></span>
+                                    <span className="ellipsis-if-long">Direct Messages</span>
+                                </button>
+                            )}
+                      </div>
+                        {/* <div>
+                            <button style={{ textDecoration: 'none' }}>
                                 <span style={{ width: "20px" }}><i className="far fa-comments"></i></span>
                                 <span className="ellipsis-if-long">Direct Messages</span>
                             </button>
-                        </div>
+                        </div> */}
                     </NavLink>
 
                     <div>
@@ -82,14 +109,27 @@ function LeftSideLinks() {
                 {/* <!-- ------ Spacer Div for Between leftside sections------- --> */}
                 <div style={{ padding: "4px" }}></div>
 
-                {(userChannelList.length > 0) && userChannelList.map((channel) => {
+                {(userChannelList.length > 0) && userChannelList
+                .filter((channel) => !channel.is_direct)
+                .map((channel) => {
                     return (
                         <NavLink exact to={`/channels/${channel.id}`}>
+
                             <div key={channel.id}>
-                                <button>
-                                    <span style={{ width: "20px" }}><i className="fas fa-hashtag"></i></span>
-                                    <span className="ellipsis-if-long" >{channel.name}</span>
-                                </button>
+
+                                {Number(channel.id) === Number(channelId) ? (
+                                    <button style={{ textDecoration: 'none', backgroundColor: '#275895', color: '#e9e8e8' }} >
+                                        <span style={{ width: "20px" }}><i className="fas fa-hashtag"></i></span>
+                                        <span className="ellipsis-if-long" >{channel.name}</span>
+                                    </button>
+                                ) : (
+                                    <button style={{ textDecoration: 'none' }} >
+                                        <span style={{ width: "20px" }}><i className="fas fa-hashtag"></i></span>
+                                        <span className="ellipsis-if-long" >{channel.name}</span>
+                                    </button>
+                                )}
+
+
                             </div>
                         </NavLink>
 
@@ -99,71 +139,10 @@ function LeftSideLinks() {
                 {/* <!-- ------ Spacer Div for Between leftside sections------- --> */}
                 <div style={{ padding: "8px" }}></div>
 
-                {/* <div>
-                    {/* <!-- ### (leftside-button-selected OPTION) IF THIS MATCHES CURRENT CHANNEL ADD STYLE THIS STYLE TO BUTTON --> */}
-                {/* <button >
-                        <span><img src="https://ca.slack-edge.com/T03GU501J-U0476TK99LH-61c6e53dbd3d-512"
-                            alt="Brian Hitchin"
-                            style={{ borderRadius: "5px", width: "20px", height: "20px", marginTop: "4px" }}></img></span>
-                        <span className="ellipsis-if-long">Dave Titus</span>
-                    </button>
-                </div>  */}
+                <LeftSideBarDMSection user={sessionUser} channels={userChannelList.filter((channel) => channel.is_direct)} />
+
 
             </div>
-
-
-            <div style={{ position: 'absolute', bottom: '0px' }}>
-                <div className="footer" style={{ padding: '20px', justifyContent: 'flex-start', alignItems: "flex-start", backgroundColor: '#3f0e40' }}>
-
-                    <div style={{ display: 'flex', justifyContent: 'flex-start', marginTop: '5px', textAlign: 'left' }}>
-
-                        <div>
-                            <span style={{ color: '#969696' }}>Dave Titus:</span>
-                        </div>
-
-                        <div className="footer-link">
-                            <span>
-                                <a className="footer-button" href="http://creativegozone.com/" target="_blank" rel="noreferrer">
-                                    <button className="copyright-button2">
-                                        <i className="fas fa-eye" style={{ fontSize: '14px' }}></i>
-                                    </button>
-                                </a>
-                            </span>
-                        </div>
-
-                        <div className="footer-link">
-                            <span>
-                                <a className="footer-button" href="https://github.com/dtitus929/Smack" target="_blank" rel="noreferrer">
-                                    <button className="copyright-button2">
-                                        <i className="fa fa-github" style={{ fontSize: '14px' }}></i>
-                                    </button>
-                                </a>
-                            </span>
-                        </div>
-
-                        <div className="footer-link">
-                            <span>
-                                <a className="footer-button" href="https://www.linkedin.com/in/djtitus/" target="_blank" rel="noreferrer">
-                                    <button className="copyright-button2">
-                                        <i className="fa fa-linkedin-square" style={{ fontSize: '14px' }}></i>
-                                    </button>
-
-
-                                </a>
-                            </span>
-                        </div>
-
-                    </div >
-
-                    <div className="footer-link" style={{ fontSize: '11px' }}>Additional Contributors:<br />Cameron Beck,&nbsp;&nbsp;Brian Hitchin,&nbsp;&nbsp;Cynthia Liang</div>
-
-
-
-                </div >
-            </div>
-
-
-
 
 
         </div>

@@ -34,6 +34,25 @@ button:hover {
     cursor: pointer;
 }
 
+a:link {
+    text-decoration: none;
+}
+
+
+a:visited {
+    text-decoration: none;
+}
+
+
+a:hover {
+    text-decoration: none;
+}
+
+
+a:active {
+    text-decoration: none;
+}
+
 #root {
     height: 100%;
 }
@@ -41,7 +60,7 @@ button:hover {
 .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
+    /* border-bottom: 1px dotted black; */
 }
 
 .tooltip .tooltiptext {
@@ -170,6 +189,21 @@ button:hover {
 }
 
 .login-input-submit:hover {
+    background-color: #5c1f5d;
+}
+
+.login-input-submit-alt {
+    font-size: 16px;
+    padding: 10px 100px;
+    margin-top: 4px;
+    color: #ffffff;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    background-color: #3f0e40;
+}
+
+.login-input-submit-alt:hover {
     background-color: #5c1f5d;
 }
 
@@ -724,6 +758,21 @@ button:hover {
     cursor: pointer;
 }
 
+/* %%%%%%%%%%%%% REACTION ICON %%%%%%%%%%%%%% */
+
+.reaction-icon {
+    border: none;
+    background-color: #FFFFFF;
+    font-size: 20px;
+    padding: 3px;
+    border: none;
+    border-radius: 8px;
+}
+
+.reaction-icon:hover {
+    background-color: #ededed;
+}
+
 /* %%%%%%%%%%%%% MESSAGE CARD %%%%%%%%%%%%%% */
 
 .message-card {
@@ -821,40 +870,6 @@ button:hover {
     width: 88px;
     text-align: center;
     font-size: 11px;
-}
-
-/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-
-.copyright-button {
-    background-color: inherit;
-    border: none;
-    border-radius: 4px;
-    font-size: 15px;
-    color: #969696;
-    cursor: pointer;
-    text-decoration: none;
-    margin-left: 5px;
-}
-
-.copyright-button:hover {
-    /* background-color: #f3f3f3; */
-    color: #3f0e40;
-}
-
-.copyright-button2 {
-    background-color: inherit;
-    border: none;
-    border-radius: 4px;
-    font-size: 15px;
-    color: #969696;
-    cursor: pointer;
-    text-decoration: none;
-    margin-left: 5px;
-}
-
-.copyright-button2:hover {
-    /* background-color: #f3f3f3; */
-    color: #ffffff;
 }
 
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
