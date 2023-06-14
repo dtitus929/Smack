@@ -61,9 +61,18 @@ def seed_channels(users):
         owner=demo
     )
 
+    channel4 = Channel(
+        name='',
+        subject='',
+        is_private=True,
+        is_direct=True,
+        owner=demo
+    )
+
     db.session.add(channel1)
     db.session.add(channel2)
     db.session.add(channel3)
+    db.session.add(channel4)
 
     channel1.users.append(demo)
     channel1.users.append(marnie)
@@ -74,9 +83,11 @@ def seed_channels(users):
     channel3.users.append(demo)
     channel3.users.append(marnie)
     channel3.users.append(bobbie)
+    channel4.users.append(demo)
+    channel4.users.append(bobbie)
     db.session.commit()
 
-    return (channel1, channel2, channel3)
+    return (channel1, channel2, channel3, channel4)
 
 
 def undo_channels():
@@ -94,26 +105,30 @@ def seed_messages(users, channels):
     channel1 = channels[0]
     channel2 = channels[1]
     channel3 = channels[2]
+    channel4 = channels[3]
     # Seed messages
     msgs = []
     demo_message_1 = Message(
-        content='hello there from Demo', is_pinned=False, users=demo, channels=channel1)
+        content='Does anyone know a good healthy substitue for sour cream?', is_pinned=False, users=demo, channels=channel1)
     demo_message_2 = Message(
-        content='this is my second message, demo signing out', is_pinned=False, users=demo, channels=channel1)
+        content='Try using yogurt instead.', is_pinned=False, users=bobbie, channels=channel1)
+    demo_message_3 = Message(
+        content='Hi Bobbie, what time are we meeting tonight?', is_pinned=False, users=demo, channels=channel4)
     msgs.append(demo_message_1)
     msgs.append(demo_message_2)
+    msgs.append(demo_message_3)
 
     marnie_message_1 = Message(
-        content='hello there from Marnie', is_pinned=False, users=marnie, channels=channel2)
+        content='Just got back from Alaska.  The trip was fantasic. GO!!!', is_pinned=False, users=marnie, channels=channel2)
     marnie_message_2 = Message(
-        content='this is my second message, Marnie signing out', is_pinned=False, users=marnie, channels=channel2)
+        content='I took an Alaskan cruise last year.  It was the best trip ever.', is_pinned=False, users=demo, channels=channel2)
     msgs.append(marnie_message_1)
     msgs.append(marnie_message_2)
 
     bob_message_1 = Message(
-        content='hello there from Bobbie', is_pinned=False, users=bobbie, channels=channel3)
+        content='My dog has fleas.  Using Seresto flea and tick collar. Any recommendation for other brands that you\'ve used that seem to work?', is_pinned=False, users=bobbie, channels=channel3)
     bob_message_2 = Message(
-        content='this is my second message, Bobbie signing out', is_pinned=False, users=bobbie, channels=channel3)
+        content='I use TevraPet Activate II.  Never had any issues.', is_pinned=False, users=marnie, channels=channel3)
     msgs.append(bob_message_1)
     msgs.append(bob_message_2)
 
@@ -136,7 +151,7 @@ def seed_reactions(users, messages):
     demo = users[0]
     marnie = users[1]
     bobbie = users[2]
-    demo_message_1, demo_message_2, marnie_message_1, marnie_message_2, bob_message_1, bob_message_2 = messages
+    demo_message_1, demo_message_2, demo_message_3, marnie_message_1, marnie_message_2, bob_message_1, bob_message_2 = messages
 
     rctions = []
     reaction_marnie_demo_message_2 = Reaction(
