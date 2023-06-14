@@ -154,7 +154,7 @@ const EditChannelModal = ({ channelId, currChannel, user }) => {
                             ))}
                         </ul>
                         <div className="edit-modal-form-box">
-                            <label htmlFor="name"> Channel name </label>
+                            <label htmlFor="name"> Channel name</label>
                             <input
                                 disabled={true}
                                 type="text"
