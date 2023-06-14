@@ -874,6 +874,40 @@ a:active {
 
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
+.copyright-button {
+    background-color: inherit;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    color: #969696;
+    cursor: pointer;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.copyright-button:hover {
+    /* background-color: #f3f3f3; */
+    color: #3f0e40;
+}
+
+.copyright-button2 {
+    background-color: inherit;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    color: #969696;
+    cursor: pointer;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.copyright-button2:hover {
+    /* background-color: #f3f3f3; */
+    color: #ffffff;
+}
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
 @media screen and (max-width: 768px) {
     .grid-container {
         grid-template-columns: 294px 1fr 1fr;

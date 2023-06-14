@@ -4,15 +4,14 @@ from app.models import Channel, User, Message, Reaction
 from sqlalchemy.sql import text
 
 
-
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@aa.io', password='password', first_name='Demo', last_name='User', avatar='https://ca.slack-edge.com/T03GU501J-U0476TK99LH-61c6e53dbd3d-512', bio='Hello, I\'m Demo User.  Nice to meet you!')
+        username='Demo', email='demo@aa.io', password='password', first_name='Demo', last_name='User', bio='This user account allows visitors to quickly login to the site and access its features.')
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password', first_name='Marnie', last_name='Jones', bio='Hello, I\'m Marnie Jones.  Nice to meet you!')
+        username='diane', email='diane@aa.io', password='password', first_name='Diane', last_name='Thompson', avatar='https://ca.slack-edge.com/T03GU501J-U0476TK99LH-61c6e53dbd3d-512', bio='Hello!  I am an account executive for a large financial firm in the DC area.  In my spare time I enjoy baking and spending time with family.')
     bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password', first_name='Bobbie', last_name='McGee', avatar='https://ca.slack-edge.com/T03GU501J-USQFVK3GT-947b84c598b8-512', bio='Hello, I\'m Bobbie McGee.  Nice to meet you!')
+        username='bobbie', email='bobbie@aa.io', password='password', first_name='Bobbie', last_name='McGee', avatar='https://ca.slack-edge.com/T03GU501J-USQFVK3GT-947b84c598b8-512', bio='My name is Bobbie and I am a tour boat captain in Florida. I also enjoy biking and rock climbing.')
 
     db.session.add(demo)
     db.session.add(marnie)
@@ -22,7 +21,7 @@ def seed_users():
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
-# have a built in function to do this. With postgres in production TRUNCATE
+# have a built in function to do this. With postgres in production TRUNCATEFav
 # removes all the data from the table, and RESET IDENTITY resets the auto
 # incrementing primary key, CASCADE deletes any dependent entities.  With
 # sqlite3 in development you need to instead use DELETE to remove all data and
@@ -36,31 +35,30 @@ def undo_users():
     db.session.commit()
 
 
-
 def seed_channels(users):
     demo = users[0]
     marnie = users[1]
     bobbie = users[2]
     channel1 = Channel(
-        name = 'Channel1 Name',
-        subject = 'Channel1 Subject',
-        is_private = True,
-        is_direct = True,
-        owner = bobbie
+        name='Cooking',
+        subject='Share Recipes and Cooking Tips',
+        is_private=False,
+        is_direct=False,
+        owner=bobbie
     )
     channel2 = Channel(
-        name = 'Channel2 Name',
-        subject = 'Channel2 Subject',
-        is_private = False,
-        is_direct = False,
-        owner = marnie
+        name='Vacation Destinations',
+        subject='Favorite Places to Visit',
+        is_private=False,
+        is_direct=False,
+        owner=marnie
     )
     channel3 = Channel(
-        name = 'Channel3 Name',
-        subject = 'Channel3 Subject',
-        is_private = True,
-        is_direct = False,
-        owner = demo
+        name='Pets',
+        subject='Dogs, Cats, Birds, Fish, Reptiles...',
+        is_private=False,
+        is_direct=False,
+        owner=demo
     )
 
     db.session.add(channel1)
@@ -70,12 +68,16 @@ def seed_channels(users):
     channel1.users.append(demo)
     channel1.users.append(marnie)
     channel1.users.append(bobbie)
+    channel2.users.append(demo)
     channel2.users.append(marnie)
+    channel2.users.append(bobbie)
     channel3.users.append(demo)
     channel3.users.append(marnie)
+    channel3.users.append(bobbie)
     db.session.commit()
 
     return (channel1, channel2, channel3)
+
 
 def undo_channels():
     if environment == "production":
@@ -95,7 +97,7 @@ def seed_messages(users, channels):
     # Seed messages
     msgs = []
     demo_message_1 = Message(
-        content='hello there from Demo', is_pinned=True, users=demo, channels=channel1)
+        content='hello there from Demo', is_pinned=False, users=demo, channels=channel1)
     demo_message_2 = Message(
         content='this is my second message, demo signing out', is_pinned=False, users=demo, channels=channel1)
     msgs.append(demo_message_1)
@@ -162,12 +164,14 @@ def seed_reactions(users, messages):
 
     db.session.commit()
 
+
 def undo_reactions():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.reactions RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM reactions")
     db.session.commit()
+
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -187,13 +191,11 @@ def seed():
         undo_channels()
         undo_users()
 
-
     users = seed_users()
     # Add other seed functions here
     channels = seed_channels(users)
     msgs = seed_messages(users, channels)
     seed_reactions(users, msgs)
-
 
 
 # Creates the `flask seed undo` command
