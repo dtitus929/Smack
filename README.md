@@ -8,6 +8,7 @@ Additional Contributors:
 [Cynthia Liang](https://github.com/cynthialiang00)
 
 Available for view at: [Smack](https://davet-smack.onrender.com/)
+* This site may take a minute to spin up.  Give it a minute. 😀 
 
 ![smack_screenshots](https://user-images.githubusercontent.com/111056707/236525525-acaef303-4d02-40cd-b79b-f31d92bf2a63.png)
 
